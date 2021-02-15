@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement>Action</OriginalElement>
+  <nodes>
+    <node x="1303.0" y="0.0">Entity</node>
+    <node x="813.0" y="0.0">Action</node>
+    <node x="6251.0" y="0.0">Background</node>
+    <node x="2277.0" y="583.0">ActionKind</node>
+    <node x="147.5" y="22495.0">VirtualWorld</node>
+    <node x="4347.0" y="0.0">Viewport</node>
+    <node x="0.0" y="3822.0">processing.core.PApplet</node>
+    <node x="4911.0" y="0.0">WorldView</node>
+    <node x="3941.0" y="0.0">WorldModel</node>
+    <node x="5823.0" y="0.0">Functions</node>
+    <node x="4641.0" y="0.0">Point</node>
+    <node x="5159.0" y="0.0">EventScheduler</node>
+    <node x="3397.0" y="0.0">ImageStore</node>
+    <node x="1894.0" y="12.0">java.io.Serializable</node>
+    <node x="2918.5" y="558.0">EventComparator</node>
+    <node x="241.5" y="0.0">processing.core.PConstants</node>
+    <node x="2927.5" y="0.0">java.lang.FunctionalInterface</node>
+    <node x="2058.0" y="0.0">java.lang.constant.Constable</node>
+    <node x="2090.0" y="104.0">java.lang.Enum</node>
+    <node x="5611.0" y="0.0">Event</node>
+    <node x="2498.0" y="0.0">java.lang.Comparable</node>
+    <node x="2703.0" y="80.0">java.util.Comparator</node>
+    <node x="2043.0000000000002" y="517.0">EntityKind</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="VirtualWorld" target="processing.core.PApplet">
+      <point x="0.0" y="-434.5" />
+      <point x="0.0" y="9311.5" />
+    </edge>
+    <edge source="EventComparator" target="java.util.Comparator">
+      <point x="0.0" y="-27.0" />
+      <point x="0.0" y="214.0" />
+    </edge>
+    <edge source="java.util.Comparator" target="java.lang.FunctionalInterface">
+      <point x="0.0" y="-214.0" />
+      <point x="0.0" y="15.0" />
+    </edge>
+    <edge source="java.lang.Enum" target="java.lang.constant.Constable">
+      <point x="0.0" y="-181.5" />
+      <point x="0.0" y="27.0" />
+    </edge>
+    <edge source="java.lang.Enum" target="java.io.Serializable">
+      <point x="-118.66666666666652" y="-181.5" />
+      <point x="2149.3333333333335" y="79.0" />
+      <point x="1966.0" y="79.0" />
+      <point x="0.0" y="15.0" />
+    </edge>
+    <edge source="java.lang.Enum" target="java.lang.Comparable">
+      <point x="118.66666666666652" y="-181.5" />
+      <point x="2386.6666666666665" y="79.0" />
+      <point x="2578.0" y="79.0" />
+      <point x="0.0" y="27.0" />
+    </edge>
+    <edge source="ActionKind" target="java.lang.Enum">
+      <point x="0.0" y="-60.5" />
+      <point x="2386.0" y="492.0" />
+      <point x="2357.0" y="492.0" />
+      <point x="89.0" y="181.5" />
+    </edge>
+    <edge source="processing.core.PApplet" target="processing.core.PConstants">
+      <point x="0.0" y="-9311.5" />
+      <point x="0.0" y="1886.0" />
+    </edge>
+    <edge source="EntityKind" target="java.lang.Enum">
+      <point x="0.0" y="-126.5" />
+      <point x="2150.0" y="492.0" />
+      <point x="2179.0" y="492.0" />
+      <point x="-89.0" y="181.5" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Group" zoom="1.0" x="319.5" y="325.0" />
+  <SelectedNodes>
+    <node>processing.core.PConstants</node>
+  </SelectedNodes>
+  <Categories>
+    <Category>Fields</Category>
+    <Category>Methods</Category>
+  </Categories>
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+

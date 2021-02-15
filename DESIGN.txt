@@ -1,0 +1,7 @@
+The following methods were not moved to a class:
+
+-Random:
+	Reason: generates random numbers, does not need a parameter and used in multiple classes. In my opinion, it makes sense to leave this function in the Functions class.
+
+-getCurrentImage: 
+	Reason: The parameter for this function is an object, and in order to make this method in object oriented style, the method must be split into two different methods.
