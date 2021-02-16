@@ -19,7 +19,7 @@ public class Crab extends Entity {
             Point tgtPos = crabTarget.get().getPosition();
 
             if (moveToCrab(world, crabTarget.get(), scheduler)) {
-                Entity quake = createQuake(tgtPos,
+                Entity quake = new Quake(tgtPos,
                         imageStore.getImageList( Action.QUAKE_KEY));
 
                 world.addEntity(quake);

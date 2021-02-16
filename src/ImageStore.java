@@ -126,7 +126,7 @@ final class ImageStore
       {
          Point pt = new Point(Integer.parseInt(properties[Action.OCTO_COL]),
                  Integer.parseInt(properties[Action.OCTO_ROW]));
-         Entity entity = Entity.createOctoNotFull(properties[Action.OCTO_ID],
+         Entity entity = new OctoNotFull(properties[Action.OCTO_ID],
                  Integer.parseInt(properties[Action.OCTO_LIMIT]),
                  pt,
                  Integer.parseInt(properties[Action.OCTO_ACTION_PERIOD]),
@@ -145,7 +145,7 @@ final class ImageStore
          Point pt = new Point(
                  Integer.parseInt(properties[Action.OBSTACLE_COL]),
                  Integer.parseInt(properties[Action.OBSTACLE_ROW]));
-         Entity entity = Entity.createObstacle(properties[Action.OBSTACLE_ID],
+         Entity entity = new Obstacle(properties[Action.OBSTACLE_ID],
                  pt, getImageList(Action.OBSTACLE_KEY));
          world.tryAddEntity( entity);
       }
@@ -159,7 +159,7 @@ final class ImageStore
       {
          Point pt = new Point(Integer.parseInt(properties[Action.FISH_COL]),
                  Integer.parseInt(properties[Action.FISH_ROW]));
-         Entity entity = Entity.createFish(properties[Action.FISH_ID],
+         Entity entity = new Fish(properties[Action.FISH_ID],
                  pt, Integer.parseInt(properties[Action.FISH_ACTION_PERIOD]),
                  getImageList(Action.FISH_KEY));
          world.tryAddEntity( entity);
@@ -174,7 +174,7 @@ final class ImageStore
       {
          Point pt = new Point(Integer.parseInt(properties[Action.ATLANTIS_COL]),
                  Integer.parseInt(properties[Action.ATLANTIS_ROW]));
-         Entity entity = Action.createAtlantis(properties[Action.ATLANTIS_ID],
+         Entity entity = new Atlantis(properties[Action.ATLANTIS_ID],
                  pt, getImageList(Action.ATLANTIS_KEY));
          world.tryAddEntity(entity);
       }
@@ -189,7 +189,7 @@ final class ImageStore
       {
          Point pt = new Point(Integer.parseInt(properties[Action.SGRASS_COL]),
                  Integer.parseInt(properties[Action.SGRASS_ROW]));
-         Entity entity = Entity.createSgrass(properties[Action.SGRASS_ID],
+         Entity entity = new Sgrass(properties[Action.SGRASS_ID],
                  pt,
                  Integer.parseInt(properties[Action.SGRASS_ACTION_PERIOD]),
                  getImageList(Action.SGRASS_KEY));

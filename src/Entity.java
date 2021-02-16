@@ -66,28 +66,28 @@ Entity ideally would includes functions for how all the entities in our virtual 
       imageIndex = (imageIndex + 1) % images.size();
    }
 
-   private static Entity createOctoFull(String id, int resourceLimit,
-                                       Point position, int actionPeriod, int animationPeriod,
-                                       List<PImage> images)
-   {
-      return new Entity(EntityKind.OCTO_FULL, id, position, images,
-              resourceLimit, resourceLimit, actionPeriod, animationPeriod);
-   }
+//   private static Entity createOctoFull(String id, int resourceLimit,
+//                                       Point position, int actionPeriod, int animationPeriod,
+//                                       List<PImage> images)
+//   {
+//      return new Entity(EntityKind.OCTO_FULL, id, position, images,
+//              resourceLimit, resourceLimit, actionPeriod, animationPeriod);
+//   }
 
-   public static Entity createOctoNotFull(String id, int resourceLimit,
-                                          Point position, int actionPeriod, int animationPeriod,
-                                          List<PImage> images)
-   {
-      return new Entity(EntityKind.OCTO_NOT_FULL, id, position, images,
-              resourceLimit, 0, actionPeriod, animationPeriod);
-   }
+//   public static Entity createOctoNotFull(String id, int resourceLimit,
+//                                          Point position, int actionPeriod, int animationPeriod,
+//                                          List<PImage> images)
+//   {
+//      return new Entity(EntityKind.OCTO_NOT_FULL, id, position, images,
+//              resourceLimit, 0, actionPeriod, animationPeriod);
+//   }
 
-   public static Entity createObstacle(String id, Point position,
-                                       List<PImage> images)
-   {
-      return new Entity(EntityKind.OBSTACLE, id, position, images,
-              0, 0, 0, 0);
-   }
+//   public static Entity createObstacle(String id, Point position,
+//                                       List<PImage> images)
+//   {
+//      return new Entity(EntityKind.OBSTACLE, id, position, images,
+//              0, 0, 0, 0);
+//   }
 
 //   public static Entity createFish(String id, Point position, int actionPeriod,
 //                                   List<PImage> images)
@@ -115,27 +115,27 @@ Entity ideally would includes functions for how all the entities in our virtual 
 //      return new Entity(EntityKind.SGRASS, id, position, images, 0, 0,
 //              actionPeriod, 0);
 //   }
-   private Point nextPositionOcto( WorldModel world,
-                                        Point destPos)
-   {
-      int horiz = Integer.signum(destPos.getX() - this.position.getX());
-      Point newPos = new Point(this.position.getX() + horiz,
-              this.position.getY());
-
-      if (horiz == 0 || world.isOccupied( newPos))
-      {
-         int vert = Integer.signum(destPos.getY() - this.position.getY());
-         newPos = new Point(this.position.getX(),
-                 this.position.getY() + vert);
-
-         if (vert == 0 || world.isOccupied( newPos))
-         {
-            newPos = this.position;
-         }
-      }
-
-      return newPos;
-   }
+//   private Point nextPositionOcto( WorldModel world,
+//                                        Point destPos)
+//   {
+//      int horiz = Integer.signum(destPos.getX() - this.position.getX());
+//      Point newPos = new Point(this.position.getX() + horiz,
+//              this.position.getY());
+//
+//      if (horiz == 0 || world.isOccupied( newPos))
+//      {
+//         int vert = Integer.signum(destPos.getY() - this.position.getY());
+//         newPos = new Point(this.position.getX(),
+//                 this.position.getY() + vert);
+//
+//         if (vert == 0 || world.isOccupied( newPos))
+//         {
+//            newPos = this.position;
+//         }
+//      }
+//
+//      return newPos;
+//   }
 
 //   private Point nextPositionCrab( WorldModel world,
 //                                        Point destPos)
@@ -162,94 +162,94 @@ Entity ideally would includes functions for how all the entities in our virtual 
 //
 //      return newPos;
 //   }
-   private  boolean transformNotFull(WorldModel world,
-                                          EventScheduler scheduler, ImageStore imageStore)
-   {
-      if (this.resourceCount >= this.resourceLimit)
-      {
-         Entity octo = createOctoFull(this.id, this.resourceLimit,
-                 this.position, this.actionPeriod, this.animationPeriod,
-                 this.images);
+//   private  boolean transformNotFull(WorldModel world,
+//                                          EventScheduler scheduler, ImageStore imageStore)
+//   {
+//      if (this.resourceCount >= this.resourceLimit)
+//      {
+//         Entity octo = createOctoFull(this.id, this.resourceLimit,
+//                 this.position, this.actionPeriod, this.animationPeriod,
+//                 this.images);
+//
+//         world.removeEntity( this);
+//         scheduler.unscheduleAllEvents(this);
+//
+//         world.addEntity( octo);
+//         scheduler.scheduleActions(octo, world, imageStore);
+//
+//         return true;
+//      }
+//
+//      return false;
+//   }
 
-         world.removeEntity( this);
-         scheduler.unscheduleAllEvents(this);
+//   private  void transformFull( WorldModel world,
+//                                    EventScheduler scheduler, ImageStore imageStore)
+//   {
+//      Entity octo = createOctoNotFull(this.id, this.resourceLimit,
+//              this.position, this.actionPeriod, this.animationPeriod,
+//              this.images);
+//
+//      world.removeEntity(this);
+//      scheduler.unscheduleAllEvents(this);
+//
+//      world.addEntity(octo);
+//      scheduler.scheduleActions(octo, world, imageStore);
+//   }
 
-         world.addEntity( octo);
-         scheduler.scheduleActions(octo, world, imageStore);
+//   private  boolean moveToNotFull( WorldModel world,
+//                                       Entity target, EventScheduler scheduler)
+//   {
+//      if (this.position.adjacent(target.position))
+//      {
+//         this.resourceCount += 1;
+//         world.removeEntity(target);
+//         scheduler.unscheduleAllEvents(target);
+//
+//         return true;
+//      }
+//      else
+//      {
+//         Point nextPos = this.nextPositionOcto(world, target.position);
+//
+//         if (!this.position.equals(nextPos))
+//         {
+//            Optional<Entity> occupant = world.getOccupant(nextPos);
+//            if (occupant.isPresent())
+//            {
+//               scheduler.unscheduleAllEvents(occupant.get());
+//            }
+//
+//            world.moveEntity(this, nextPos);
+//         }
+//         return false;
+//      }
+//   }
 
-         return true;
-      }
-
-      return false;
-   }
-
-   private  void transformFull( WorldModel world,
-                                    EventScheduler scheduler, ImageStore imageStore)
-   {
-      Entity octo = createOctoNotFull(this.id, this.resourceLimit,
-              this.position, this.actionPeriod, this.animationPeriod,
-              this.images);
-
-      world.removeEntity(this);
-      scheduler.unscheduleAllEvents(this);
-
-      world.addEntity(octo);
-      scheduler.scheduleActions(octo, world, imageStore);
-   }
-
-   private  boolean moveToNotFull( WorldModel world,
-                                       Entity target, EventScheduler scheduler)
-   {
-      if (this.position.adjacent(target.position))
-      {
-         this.resourceCount += 1;
-         world.removeEntity(target);
-         scheduler.unscheduleAllEvents(target);
-
-         return true;
-      }
-      else
-      {
-         Point nextPos = this.nextPositionOcto(world, target.position);
-
-         if (!this.position.equals(nextPos))
-         {
-            Optional<Entity> occupant = world.getOccupant(nextPos);
-            if (occupant.isPresent())
-            {
-               scheduler.unscheduleAllEvents(occupant.get());
-            }
-
-            world.moveEntity(this, nextPos);
-         }
-         return false;
-      }
-   }
-
-   private  boolean moveToFull( WorldModel world,
-                                    Entity target, EventScheduler scheduler)
-   {
-      if (this.position.adjacent(target.position))
-      {
-         return true;
-      }
-      else
-      {
-         Point nextPos = this.nextPositionOcto( world, target.position);
-
-         if (!this.position.equals(nextPos))
-         {
-            Optional<Entity> occupant = world.getOccupant(nextPos);
-            if (occupant.isPresent())
-            {
-               scheduler.unscheduleAllEvents(occupant.get());
-            }
-
-            world.moveEntity( this, nextPos);
-         }
-         return false;
-      }
-   }
+//   private  boolean moveToFull( WorldModel world,
+//                                    Entity target, EventScheduler scheduler)
+//   {
+//      if (this.position.adjacent(target.position))
+//      {
+//         return true;
+//      }
+//      else
+//      {
+//         Point nextPos = this.nextPositionOcto( world, target.position);
+//
+//         if (!this.position.equals(nextPos))
+//         {
+//            Optional<Entity> occupant = world.getOccupant(nextPos);
+//            if (occupant.isPresent())
+//            {
+//               scheduler.unscheduleAllEvents(occupant.get());
+//            }
+//
+//            world.moveEntity( this, nextPos);
+//         }
+//         return false;
+//      }
+//   }
 
 //   private  boolean moveToCrab(WorldModel world,
 //                                    Entity target, EventScheduler scheduler)
@@ -277,37 +277,37 @@ Entity ideally would includes functions for how all the entities in our virtual 
 //         return false;
 //      }
 //   }
-   public void executeOctoFullActivity(WorldModel world,
-                                              ImageStore imageStore, EventScheduler scheduler) {
-      Optional<Entity> fullTarget = world.findNearest(this.position,
-              EntityKind.ATLANTIS);
+//   public void executeOctoFullActivity(WorldModel world,
+//                                              ImageStore imageStore, EventScheduler scheduler) {
+//      Optional<Entity> fullTarget = world.findNearest(this.position,
+//              EntityKind.ATLANTIS);
+//
+//      if (fullTarget.isPresent() &&
+//              moveToFull( world, fullTarget.get(), scheduler)) {
+//         //at atlantis trigger animation
+//         scheduler.scheduleActions(fullTarget.get(), world, imageStore);
+//
+//         //transform to unfull
+//         transformFull(world, scheduler, imageStore);
+//      } else {
+//         scheduler.scheduleEvent(this,
+//                 Action.createActivityAction(this, world, imageStore),
+//                 this.actionPeriod);
+//      }
+//   }
 
-      if (fullTarget.isPresent() &&
-              moveToFull( world, fullTarget.get(), scheduler)) {
-         //at atlantis trigger animation
-         scheduler.scheduleActions(fullTarget.get(), world, imageStore);
-
-         //transform to unfull
-         transformFull(world, scheduler, imageStore);
-      } else {
-         scheduler.scheduleEvent(this,
-                 Action.createActivityAction(this, world, imageStore),
-                 this.actionPeriod);
-      }
-   }
-
-   public void executeOctoNotFullActivity(WorldModel world, ImageStore imageStore, EventScheduler scheduler) {
-      Optional<Entity> notFullTarget = world.findNearest(this.position,
-              EntityKind.FISH);
-
-      if (!notFullTarget.isPresent() ||
-              !moveToNotFull( world, notFullTarget.get(), scheduler) ||
-              !transformNotFull(world, scheduler, imageStore)) {
-         scheduler.scheduleEvent(this,
-                 Action.createActivityAction(this, world, imageStore),
-                 this.actionPeriod);
-      }
-   }
+//   public void executeOctoNotFullActivity(WorldModel world, ImageStore imageStore, EventScheduler scheduler) {
+//      Optional<Entity> notFullTarget = world.findNearest(this.position,
+//              EntityKind.FISH);
+//
+//      if (!notFullTarget.isPresent() ||
+//              !moveToNotFull( world, notFullTarget.get(), scheduler) ||
+//              !transformNotFull(world, scheduler, imageStore)) {
+//         scheduler.scheduleEvent(this,
+//                 Action.createActivityAction(this, world, imageStore),
+//                 this.actionPeriod);
+//      }
+//   }
 
 //   public  void executeFishActivity( WorldModel world,
 //                                          ImageStore imageStore, EventScheduler scheduler) {
@@ -349,17 +349,19 @@ Entity ideally would includes functions for how all the entities in our virtual 
 //              nextPeriod);
 //   }
 
-   public  void executeQuakeActivity(WorldModel world, EventScheduler scheduler) {
-      scheduler.unscheduleAllEvents(this);
-      world.removeEntity(this);
-   }
+//   public  void executeQuakeActivity(WorldModel world, EventScheduler scheduler) {
+//      scheduler.unscheduleAllEvents(this);
+//      world.removeEntity(this);
+//   }
 
-   public  void executeAtlantisActivity(WorldModel world, EventScheduler scheduler) {
-      scheduler.unscheduleAllEvents(this);
-      world.removeEntity(this);
-   }
+//   public  void executeAtlantisActivity(WorldModel world, EventScheduler scheduler) {
+//      scheduler.unscheduleAllEvents(this);
+//      world.removeEntity(this);
+//   }
 
-//   public  void executeSgrassActivity(WorldModel world,
+
+
+   //   public  void executeSgrassActivity(WorldModel world,
 //                                            ImageStore imageStore, EventScheduler scheduler) {
 //      Optional<Point> openPt = world.findOpenAround(this.position);
 //
@@ -402,7 +404,9 @@ Entity ideally would includes functions for how all the entities in our virtual 
          return Optional.of(nearest);
       }
    }
+   public int getResourceLimit(){return resourceLimit;}
 
+   public int getResourceCount(){return resourceCount;}
 
    public EntityKind getKind() {
       return kind;
@@ -428,6 +432,10 @@ Entity ideally would includes functions for how all the entities in our virtual 
 
    public int getActionPeriod() {
       return actionPeriod;
+   }
+
+   public void setResourceCount(int resourceCount) {
+      this.resourceCount = resourceCount;
    }
 }
 

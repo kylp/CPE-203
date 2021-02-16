@@ -3,8 +3,8 @@ import processing.core.PImage;
 import java.util.List;
 
 public class Fish extends Entity {
-    public Fish(String id, Point position,
-                int actionPeriod, int animationPeriod, List<PImage> images) {
+    public Fish(String id, Point position, int actionPeriod,
+                                   List<PImage> images) {
         super(EntityKind.FISH, id, position, images, 0, 0,
               actionPeriod, 0);
     }

@@ -87,11 +87,11 @@ final class Action {
       return new Action(ActionKind.ACTIVITY, entity, world, imageStore, 0);
    }
 
-   public static Entity createAtlantis(String id, Point position,
-                                       List<PImage> images) {
-      return new Entity(EntityKind.ATLANTIS, id, position, images,
-              0, 0, 0, 0);
-   }
+//   public static Entity createAtlantis(String id, Point position,
+//                                       List<PImage> images) {
+//      return new Entity(EntityKind.ATLANTIS, id, position, images,
+//              0, 0, 0, 0);
+//   }
 
    public void executeAction(EventScheduler scheduler) {
       switch (this.kind) {
