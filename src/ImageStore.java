@@ -9,6 +9,8 @@ ImageStore: to ideally keep track of the images used in our virtual world
 
 final class ImageStore
 {
+   private static final int PROPERTY_KEY = 0;
+
    private final Map<String, List<PImage>> images;
    private final List<PImage> defaultImages;
 
@@ -64,7 +66,7 @@ final class ImageStore
       String[] properties = line.split("\\s");
       if (properties.length > 0)
       {
-         switch (properties[Functions.PROPERTY_KEY])
+         switch (properties[PROPERTY_KEY])
          {
             case BGND_KEY:
                return parseBackground(properties, world);
@@ -252,6 +254,24 @@ final class ImageStore
          }
       }
       img.updatePixels();
+   }
+   public static PImage getCurrentImage(Object entity)
+   {
+      if (entity instanceof Background)
+      {
+         return ((Background) entity).getImages()
+                 .get(((Background) entity).getImageIndex());
+      }
+      else if (entity instanceof Entity)
+      {
+         return ((Entity) entity).getImages().get(((Entity) entity).getImageIndex());
+      }
+      else
+      {
+         throw new UnsupportedOperationException(
+                 String.format("getCurrentImage not supported for %s",
+                         entity));
+      }
    }
 
 }

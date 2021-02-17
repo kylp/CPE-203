@@ -10,7 +10,7 @@ Functions - everything our virtual world is doing right now - is this a good des
 
 final class Functions
 {
-   public static final Random rand = new Random();
+//   public static final Random rand = new Random();
 
 //   public static final String OCTO_KEY = "octo";
 //   public static final int OCTO_NUM_PROPERTIES = 7;
@@ -79,26 +79,26 @@ final class Functions
 //   private static final int KEYED_GREEN_IDX = 3;
 //   private static final int KEYED_BLUE_IDX = 4;
 
-   public static final int PROPERTY_KEY = 0;
+//   public static final int PROPERTY_KEY = 0;
 
-   public static PImage getCurrentImage(Object entity)
-   {
-      if (entity instanceof Background)
-      {
-         return ((Background) entity).getImages()
-            .get(((Background) entity).getImageIndex());
-      }
-      else if (entity instanceof Entity)
-      {
-         return ((Entity) entity).getImages().get(((Entity) entity).getImageIndex());
-      }
-      else
-      {
-         throw new UnsupportedOperationException(
-            String.format("getCurrentImage not supported for %s",
-            entity));
-      }
-   }
+//   public static PImage getCurrentImage(Object entity)
+//   {
+//      if (entity instanceof Background)
+//      {
+//         return ((Background) entity).getImages()
+//            .get(((Background) entity).getImageIndex());
+//      }
+//      else if (entity instanceof Entity)
+//      {
+//         return ((Entity) entity).getImages().get(((Entity) entity).getImageIndex());
+//      }
+//      else
+//      {
+//         throw new UnsupportedOperationException(
+//            String.format("getCurrentImage not supported for %s",
+//            entity));
+//      }
+//   }
 //MOVED TO ENTITY CLASS
 //   public static int getAnimationPeriod(Entity entity)
 //   {
@@ -1043,11 +1043,11 @@ final class Functions
 //   {
 //      return new Point(col - viewport.col, row - viewport.row);
 //   }
-
-   public static int clamp(int value, int low, int high)
-   {
-      return Math.min(high, Math.max(value, low));
-   }
+//
+//   public static int clamp(int value, int low, int high)
+//   {
+//      return Math.min(high, Math.max(value, low));
+//   }
 
 //   public static void shiftView(WorldView view, int colDelta, int rowDelta)
 //   {

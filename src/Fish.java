@@ -19,7 +19,7 @@ public class Fish extends Entity {
         Entity crab = new Crab(getId() + Action.CRAB_ID_SUFFIX,
                 pos, getActionPeriod() / Action.CRAB_PERIOD_SCALE,
                 Action.CRAB_ANIMATION_MIN +
-                        Functions.rand.nextInt(Action.CRAB_ANIMATION_MAX - Action.CRAB_ANIMATION_MIN),
+                        rand.nextInt(Action.CRAB_ANIMATION_MAX - Action.CRAB_ANIMATION_MIN),
                 imageStore.getImageList(Action.CRAB_KEY));
 
         world.addEntity(crab);

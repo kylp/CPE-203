@@ -1,5 +1,6 @@
 import java.util.List;
 import java.util.Optional;
+import java.util.Random;
 
 import processing.core.PImage;
 
@@ -36,6 +37,7 @@ Entity ideally would includes functions for how all the entities in our virtual 
       this.actionPeriod = actionPeriod;
       this.animationPeriod = animationPeriod;
    }
+      public static final Random rand = new Random();
 
    public abstract void executeActivityAction(WorldModel world,
                                               ImageStore imageStore, EventScheduler scheduler);

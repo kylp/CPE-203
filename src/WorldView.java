@@ -51,10 +51,14 @@ final class WorldView
          if (this.viewport.contains( pos))
          {
             Point viewPoint = this.viewport.worldToViewport(pos.getX(), pos.getY());
-            this.screen.image(Functions.getCurrentImage(entity),
+            this.screen.image(ImageStore.getCurrentImage(entity),
                     viewPoint.getX() * this.tileWidth, viewPoint.getY() * this.tileHeight);
          }
       }
+   }
+      private int clamp(int value, int low, int high)
+   {
+      return Math.min(high, Math.max(value, low));
    }
    public void drawViewport()
    {
@@ -63,9 +67,9 @@ final class WorldView
    }
    public void shiftView( int colDelta, int rowDelta)
    {
-      int newCol = Functions.clamp(this.viewport.getCol() + colDelta, 0,
+      int newCol = clamp(this.viewport.getCol() + colDelta, 0,
               this.world.getNumCols() - this.viewport.getNumCols());
-      int newRow = Functions.clamp(this.viewport.getRow() + rowDelta, 0,
+      int newRow = clamp(this.viewport.getRow() + rowDelta, 0,
               this.world.getNumRows() - this.viewport.getNumRows());
 
       this.viewport.shift(newCol, newRow);

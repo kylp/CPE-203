@@ -137,7 +137,7 @@ final class WorldModel
    {
       if (withinBounds( pos))
       {
-         return Optional.of(Functions.getCurrentImage(getBackgroundCell( pos)));
+         return Optional.of(ImageStore.getCurrentImage(getBackgroundCell( pos)));
       }
       else
       {

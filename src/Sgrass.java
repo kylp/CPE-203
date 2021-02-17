@@ -18,7 +18,7 @@ public class Sgrass extends Entity{
         if (openPt.isPresent()) {
             Entity fish = new Fish(Action.FISH_ID_PREFIX + getId(),
                     openPt.get(), Action.FISH_CORRUPT_MIN +
-                            Functions.rand.nextInt(Action.FISH_CORRUPT_MAX - Action.FISH_CORRUPT_MIN),
+                            rand.nextInt(Action.FISH_CORRUPT_MAX - Action.FISH_CORRUPT_MIN),
                     imageStore.getImageList( Action.FISH_KEY));
             world.addEntity(fish);
             scheduler.scheduleActions(fish, world, imageStore);
