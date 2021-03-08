@@ -1,14 +1,15 @@
 import processing.core.PImage;
 
+import java.nio.file.Path;
 import java.util.List;
 import java.util.Optional;
 
 public class OctoFull extends Octo{
     public OctoFull(String id, int resourceLimit,
                     Point position, int actionPeriod, int animationPeriod,
-                    List<PImage> images){
+                    List<PImage> images, PathingStrategy pathingStrategy){
         super(EntityKind.OCTO_FULL, id, position, images,
-                resourceLimit, resourceLimit, actionPeriod, animationPeriod);
+                resourceLimit, resourceLimit, actionPeriod, animationPeriod, pathingStrategy);
     }
 
     @Override
@@ -79,10 +80,11 @@ public class OctoFull extends Octo{
     private  void transformFull( WorldModel world,
                                  EventScheduler scheduler, ImageStore imageStore)
     {
+        PathingStrategy path = new SingleStepPathingStrategy();
         //todo: fix this
         Entity octo = new OctoNotFull(this.getId(), this.getResourceLimit(),
                 this.getPosition(), this.getActionPeriod(), this.getAnimationPeriod(),
-                this.getImages());
+                this.getImages(), path);
 
         world.removeEntity(this);
         scheduler.unscheduleAllEvents(this);

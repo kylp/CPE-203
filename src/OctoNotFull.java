@@ -6,10 +6,10 @@ import java.util.Optional;
 public class OctoNotFull extends Octo{
     public OctoNotFull(String id, int resourceLimit,
                                            Point position, int actionPeriod, int animationPeriod,
-                                           List<PImage> images)
+                                           List<PImage> images, PathingStrategy pathingStrategy)
     {
          super(EntityKind.OCTO_NOT_FULL, id, position, images,
-                resourceLimit, 0, actionPeriod, animationPeriod);
+                resourceLimit, 0, actionPeriod, animationPeriod, pathingStrategy);
     }
 
     @Override
@@ -61,9 +61,10 @@ public class OctoNotFull extends Octo{
     {
         if (this.getResourceCount() >= this.getResourceLimit())
         {
+            PathingStrategy path = new SingleStepPathingStrategy();
             Entity octo = new OctoFull(this.getId(), this.getResourceLimit(),
                     this.getPosition(), this.getActionPeriod(), this.getAnimationPeriod(),
-                    this.getImages());
+                    this.getImages(), path);
 
             world.removeEntity( this);
             scheduler.unscheduleAllEvents(this);

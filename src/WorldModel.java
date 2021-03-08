@@ -122,7 +122,7 @@ final class WorldModel
       this.background[pos.getY()][pos.getX()] = background;
    }
 
-   private boolean withinBounds( Point pos)
+   boolean withinBounds(Point pos)
    {
       return pos.getY() >= 0 && pos.getY() < this.numRows &&
               pos.getX() >= 0 && pos.getX() < this.numCols;

@@ -5,9 +5,9 @@ import java.util.Optional;
 
 public class Crab extends Entity {
     public Crab(String id, Point position,
-                int actionPeriod, int animationPeriod, List<PImage> images) {
+                int actionPeriod, int animationPeriod, List<PImage> images, PathingStrategy pathingStrategy) {
         super(EntityKind.CRAB, id, position, images,
-                0, 0, actionPeriod, animationPeriod);
+                0, 0, actionPeriod, animationPeriod, pathingStrategy);
     }
 
     @Override
@@ -15,12 +15,14 @@ public class Crab extends Entity {
         Optional<Entity> crabTarget = world.findNearest(getPosition(), EntityKind.SGRASS);
         long nextPeriod = getActionPeriod();
 
+        PathingStrategy path = new SingleStepPathingStrategy();
+
         if (crabTarget.isPresent()) {
             Point tgtPos = crabTarget.get().getPosition();
 
             if (moveToCrab(world, crabTarget.get(), scheduler)) {
                 Entity quake = new Quake(tgtPos,
-                        imageStore.getImageList( Action.QUAKE_KEY));
+                        imageStore.getImageList( Action.QUAKE_KEY), path);
 
                 world.addEntity(quake);
                 nextPeriod += getActionPeriod();
@@ -63,26 +65,34 @@ public class Crab extends Entity {
     private Point nextPositionCrab( WorldModel world,
                                     Point destPos)
     {
-        int horiz = Integer.signum(destPos.getX() - getPosition().getX());
-        Point newPos = new Point(getPosition().getX() + horiz,
-                getPosition().getY());
 
-        Optional<Entity> occupant = world.getOccupant( newPos);
+//        int horiz = Integer.signum(destPos.getX() - getPosition().getX());
+//        Point newPos = new Point(getPosition().getX() + horiz,
+//                getPosition().getY());
+//
+//        Optional<Entity> occupant = world.getOccupant( newPos);
+//
+//        if (horiz == 0 ||
+//                (occupant.isPresent() && !(occupant.get().getKind() == EntityKind.FISH)))
+//        {
+//            int vert = Integer.signum(destPos.getY() - getPosition().getY());
+//            newPos = new Point(getPosition().getX(), getPosition().getY() + vert);
+//            occupant = world.getOccupant( newPos);
+//
+//            if (vert == 0 ||
+//                    (occupant.isPresent() && !(occupant.get().getKind() == EntityKind.FISH)))
+//            {
+//                newPos = getPosition();
+//            }
+//        }
+        SingleStepPathingStrategy pathingStrategy = new SingleStepPathingStrategy();
 
-        if (horiz == 0 ||
-                (occupant.isPresent() && !(occupant.get().getKind() == EntityKind.FISH)))
-        {
-            int vert = Integer.signum(destPos.getY() - getPosition().getY());
-            newPos = new Point(getPosition().getX(), getPosition().getY() + vert);
-            occupant = world.getOccupant( newPos);
-
-            if (vert == 0 ||
-                    (occupant.isPresent() && !(occupant.get().getKind() == EntityKind.FISH)))
-            {
-                newPos = getPosition();
-            }
+        List<Point> nextPoints = pathingStrategy.computePath(getPosition(), destPos, canPassThrough(world),
+                Entity::withinReach, PathingStrategy.CARDINAL_NEIGHBORS);
+        if(nextPoints.size() == 0){
+            return getPosition();
         }
+        return nextPoints.get(0);
 
-        return newPos;
     }
 }

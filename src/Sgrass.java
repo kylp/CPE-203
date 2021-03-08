@@ -5,9 +5,9 @@ import java.util.Optional;
 
 public class Sgrass extends Entity{
     public Sgrass(String id, Point position, int actionPeriod,
-                  List<PImage> images){
+                  List<PImage> images, PathingStrategy pathingStrategy){
         super(EntityKind.SGRASS, id, position, images, 0, 0,
-                actionPeriod, 0);
+                actionPeriod, 0, pathingStrategy);
     }
 
     @Override
@@ -15,11 +15,13 @@ public class Sgrass extends Entity{
                                        ImageStore imageStore, EventScheduler scheduler) {
         Optional<Point> openPt = world.findOpenAround(getPosition());
 
+        PathingStrategy path = new SingleStepPathingStrategy();
+
         if (openPt.isPresent()) {
             Entity fish = new Fish(Action.FISH_ID_PREFIX + getId(),
                     openPt.get(), Action.FISH_CORRUPT_MIN +
                             rand.nextInt(Action.FISH_CORRUPT_MAX - Action.FISH_CORRUPT_MIN),
-                    imageStore.getImageList( Action.FISH_KEY));
+                    imageStore.getImageList( Action.FISH_KEY), path);
             world.addEntity(fish);
             scheduler.scheduleActions(fish, world, imageStore);
         }

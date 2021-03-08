@@ -1,3 +1,4 @@
+import java.nio.file.Path;
 import java.util.*;
 
 import processing.core.PApplet;
@@ -126,6 +127,7 @@ final class ImageStore
    {
       if (properties.length == Action.OCTO_NUM_PROPERTIES)
       {
+         PathingStrategy path = new SingleStepPathingStrategy();
          Point pt = new Point(Integer.parseInt(properties[Action.OCTO_COL]),
                  Integer.parseInt(properties[Action.OCTO_ROW]));
          Entity entity = new OctoNotFull(properties[Action.OCTO_ID],
@@ -133,7 +135,7 @@ final class ImageStore
                  pt,
                  Integer.parseInt(properties[Action.OCTO_ACTION_PERIOD]),
                  Integer.parseInt(properties[Action.OCTO_ANIMATION_PERIOD]),
-                 getImageList( Action.OCTO_KEY));
+                 getImageList( Action.OCTO_KEY), path);
          world.tryAddEntity( entity);
       }
 
@@ -142,13 +144,14 @@ final class ImageStore
 
    private  boolean parseObstacle(String [] properties, WorldModel world)
    {
+      PathingStrategy path = new SingleStepPathingStrategy();
       if (properties.length == Action.OBSTACLE_NUM_PROPERTIES)
       {
          Point pt = new Point(
                  Integer.parseInt(properties[Action.OBSTACLE_COL]),
                  Integer.parseInt(properties[Action.OBSTACLE_ROW]));
          Entity entity = new Obstacle(properties[Action.OBSTACLE_ID],
-                 pt, getImageList(Action.OBSTACLE_KEY));
+                 pt, getImageList(Action.OBSTACLE_KEY), path);
          world.tryAddEntity( entity);
       }
 
@@ -159,11 +162,13 @@ final class ImageStore
    {
       if (properties.length == Action.FISH_NUM_PROPERTIES)
       {
+         PathingStrategy path = new SingleStepPathingStrategy();
+
          Point pt = new Point(Integer.parseInt(properties[Action.FISH_COL]),
                  Integer.parseInt(properties[Action.FISH_ROW]));
          Entity entity = new Fish(properties[Action.FISH_ID],
                  pt, Integer.parseInt(properties[Action.FISH_ACTION_PERIOD]),
-                 getImageList(Action.FISH_KEY));
+                 getImageList(Action.FISH_KEY), path);
          world.tryAddEntity( entity);
       }
 
@@ -174,10 +179,11 @@ final class ImageStore
    {
       if (properties.length == Action.ATLANTIS_NUM_PROPERTIES)
       {
+         PathingStrategy path = new SingleStepPathingStrategy();
          Point pt = new Point(Integer.parseInt(properties[Action.ATLANTIS_COL]),
                  Integer.parseInt(properties[Action.ATLANTIS_ROW]));
          Entity entity = new Atlantis(properties[Action.ATLANTIS_ID],
-                 pt, getImageList(Action.ATLANTIS_KEY));
+                 pt, getImageList(Action.ATLANTIS_KEY), path);
          world.tryAddEntity(entity);
       }
 
@@ -189,12 +195,13 @@ final class ImageStore
    {
       if (properties.length == Action.SGRASS_NUM_PROPERTIES)
       {
+         PathingStrategy path = new SingleStepPathingStrategy();
          Point pt = new Point(Integer.parseInt(properties[Action.SGRASS_COL]),
                  Integer.parseInt(properties[Action.SGRASS_ROW]));
          Entity entity = new Sgrass(properties[Action.SGRASS_ID],
                  pt,
                  Integer.parseInt(properties[Action.SGRASS_ACTION_PERIOD]),
-                 getImageList(Action.SGRASS_KEY));
+                 getImageList(Action.SGRASS_KEY), path);
          world.tryAddEntity(entity);
       }
 

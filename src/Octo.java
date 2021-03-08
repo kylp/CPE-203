@@ -3,8 +3,8 @@ import processing.core.PImage;
 import java.util.List;
 
 public abstract class Octo extends Entity{
-    public Octo(EntityKind kind, String id, Point position, List<PImage> images, int resourceLimit, int resourceCount, int actionPeriod, int animationPeriod) {
-        super(kind, id, position, images, resourceLimit, resourceCount, actionPeriod, animationPeriod);
+    public Octo(EntityKind kind, String id, Point position, List<PImage> images, int resourceLimit, int resourceCount, int actionPeriod, int animationPeriod, PathingStrategy pathingStrategy) {
+        super(kind, id, position, images, resourceLimit, resourceCount, actionPeriod, animationPeriod, pathingStrategy);
     }
 
     public Point nextPositionOcto(WorldModel world,
