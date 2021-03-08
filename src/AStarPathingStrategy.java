@@ -1,8 +1,5 @@
 import java.lang.reflect.Array;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.PriorityQueue;
-import java.util.Queue;
+import java.util.*;
 import java.util.function.BiPredicate;
 import java.util.function.Function;
 import java.util.function.Predicate;
@@ -11,20 +8,76 @@ import java.util.stream.Stream;
 
 public class AStarPathingStrategy implements PathingStrategy{
 
-    @Override
-    public List<Point> computePath(Point start, Point end, Predicate<Point> canPassThrough,
-                                   BiPredicate<Point, Point> withinReach, Function<Point, Stream<Point>> potentialNeighbors) {
+    static class PriorityPoint implements Comparable<PriorityPoint>{
+        double priority;
+        Point point;
 
-        int g;
-        int h;
-        int f;
-        Queue<Point> openList = new PriorityQueue<Point>();
-        List<Point> closedList = new ArrayList<>();
+        public PriorityPoint(double priority, Point point) {
+            this.priority = priority;
+            this.point = point;
+        }
+
+        @Override
+        public int compareTo(PriorityPoint o) {
+            return Double.compare(priority, o.priority);
+        }
+    }
+    @Override
+    public List<Point> computePath(
+            Point start,
+            Point end,
+            Predicate<Point> canPassThrough,
+            BiPredicate<Point, Point> withinReach,
+            Function<Point, Stream<Point>> potentialNeighbors) {
+
+
+        Queue<PriorityPoint> openList = new PriorityQueue<PriorityPoint>();
         List<Point> finalPathList = new ArrayList<>();
 
-        openList = CARDINAL_NEIGHBORS.apply(start).collect(Collectors.toCollection((PriorityQueue::new)));
+        HashMap<Point, Point> previous = new HashMap<>();
+        HashMap<Point, Integer> distanceTraveled = new HashMap<>();
 
-        Stream<Point> neighbors = CARDINAL_NEIGHBORS.apply(start);
+        HashSet<Point> closedList = new HashSet<>();
+
+
+        openList.add(new PriorityPoint(dist(start,end), start));
+
+        while (!openList.isEmpty()){
+            PriorityPoint current = openList.poll();
+            if(current.point.equals(end)){
+                //TODO: return the final path
+                break;
+            }
+            List<Point> neighbors =
+                    CARDINAL_NEIGHBORS.apply(current.point)
+                            .filter(p -> !closedList.contains(p))
+                            .filter(canPassThrough)
+                            .collect(Collectors.toList());
+            for (Point p : neighbors) {
+                distanceTraveled.put(p, distanceTraveled.get(current.point));
+
+                PriorityPoint pp = new PriorityPoint(dist(p, end)+distanceTraveled.get(p), p);
+                openList.add(pp);
+                closedList.add(p);
+                previous.put(p, current.point);
+            }
+        }
+        if (closedList.contains(end)){
+            Point current = end;
+
+
+            while (!current.equals(end)){
+                finalPathList.add(current);
+                current = previous.get(current);
+            }
+
+            Collections.reverse(finalPathList);
+        }
+        else {
+            finalPathList.add(start);
+        }
+        return finalPathList;
+
 
 
 
