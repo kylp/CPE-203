@@ -7,6 +7,7 @@ import processing.core.PImage;
 import java.util.List;
 
 final class Action {
+
    private final ActionKind kind;
    private final Entity entity;
    private final WorldModel world;
@@ -29,7 +30,7 @@ final class Action {
    public static final int OBSTACLE_COL = 2;
    public static final int OBSTACLE_ROW = 3;
 
-   public static final String FISH_KEY = "fish";
+   public static final String BERRY_KEY = "fish";
    public static final int FISH_NUM_PROPERTIES = 5;
    public static final int FISH_ID = 1;
    public static final int FISH_COL = 2;
@@ -51,23 +52,27 @@ final class Action {
    public static final int SGRASS_ROW = 3;
    public static final int SGRASS_ACTION_PERIOD = 4;
 
-   public static final String CRAB_KEY = "crab";
-   public static final String CRAB_ID_SUFFIX = " -- crab";
-   public static final int CRAB_PERIOD_SCALE = 4;
-   public static final int CRAB_ANIMATION_MIN = 50;
-   public static final int CRAB_ANIMATION_MAX = 150;
+   public static final String WOLF_KEY = "crab";
+   public static final String WOLF_ID_SUFFIX = " -- crab";
+   public static final int WOLF_PERIOD_SCALE = 4;
+   public static final int WOLF_ANIMATION_MIN = 50;
+   public static final int WOLF_ANIMATION_MAX = 150;
 
    public static final String QUAKE_KEY = "quake";
-   public static final String QUAKE_ID = "quake";
-   public static final int QUAKE_ACTION_PERIOD = 1100;
-   public static final int QUAKE_ANIMATION_PERIOD = 100;
+   public static final String EXPLO_ID = "quake";
+   public static final int EXPLO_ACTION_PERIOD = 1100;
+   public static final int EXPLO_ANIMATION_PERIOD = 100;
    public static final int QUAKE_ANIMATION_REPEAT_COUNT = 10;
 
 
-   public static final String FISH_ID_PREFIX = "fish -- ";
-   public static final int FISH_CORRUPT_MIN = 20000;
-   public static final int FISH_CORRUPT_MAX = 30000;
+   public static final String BERRY_ID_PREFIX = "fish -- ";
+   public static final int BERRY_CORRUPT_MIN = 20000;
+   public static final int BERRY_CORRUPT_MAX = 30000;
    public static final int FISH_REACH = 1;
+
+   public static final String CAT_ID ="cat";
+   public static final int CAT_ACTION_PERIOD = 4;
+   public static final int CAT_ANIMATION_PERIOD = 100;
 
    public Action(ActionKind kind, Entity entity, WorldModel world,
                  ImageStore imageStore, int repeatCount) {

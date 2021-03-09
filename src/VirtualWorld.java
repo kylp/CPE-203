@@ -46,6 +46,8 @@ public final class VirtualWorld
    private WorldView view;
    private EventScheduler scheduler;
 
+   private Cat theCat = null;
+
    private long next_time;
 
 
@@ -82,6 +84,27 @@ public final class VirtualWorld
 
       view.drawViewport();
    }
+   public void mousePressed(){
+      //TODO: create new entity,
+
+
+      Point spawnPoint = view.mouseToWorld(mouseX,mouseY);
+      Point berryPoint = new Point (spawnPoint.x + 1, spawnPoint.y);
+      if (theCat == null && Entity.canPassThrough(world).test(spawnPoint)) {
+         theCat = new Cat(spawnPoint, imageStore.getImageList(Action.CAT_ID), new AStarPathingStrategy());
+         world.addEntity(theCat);
+         scheduler.scheduleActions(theCat, world, imageStore);
+      }
+      PathingStrategy path = new AStarPathingStrategy();
+      if(Entity.canPassThrough(world).test(berryPoint)) {
+         Entity berry = new Berry(Action.BERRY_ID_PREFIX + Action.CAT_ID,
+                 berryPoint, Action.BERRY_CORRUPT_MIN +
+                 Entity.rand.nextInt(Action.BERRY_CORRUPT_MAX - Action.BERRY_CORRUPT_MIN),
+                 imageStore.getImageList(Action.BERRY_KEY), path);
+         world.addEntity(berry);
+         scheduler.scheduleActions(berry, world, imageStore);
+      }
+   }
 
    public void keyPressed() {
       if (key == CODED) {
@@ -103,6 +126,19 @@ public final class VirtualWorld
                break;
          }
          view.shiftView(dx, dy);
+         if (theCat != null) {
+            Point oldPos = theCat.getPosition();
+            Point newPos = new Point(oldPos.x + dx, oldPos.y + dy);
+            if (world.isOccupied(newPos)) {
+               Entity blocker = world.getOccupant(newPos).get();
+               if (blocker instanceof SpinBirb) {
+                  world.removeEntity(blocker);
+                  world.moveEntity(theCat, newPos);
+               }
+            } else {
+               world.moveEntity(theCat, newPos);
+            }
+         }
       }
    }
 

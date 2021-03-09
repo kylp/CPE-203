@@ -30,6 +30,7 @@ public class AStarPathingStrategy implements PathingStrategy{
             BiPredicate<Point, Point> withinReach,
             Function<Point, Stream<Point>> potentialNeighbors) {
 
+  //      System.out.println("A*: " + start + " -> " + end);
 
         Queue<PriorityPoint> openList = new PriorityQueue<PriorityPoint>();
         List<Point> finalPathList = new ArrayList<>();
@@ -41,20 +42,21 @@ public class AStarPathingStrategy implements PathingStrategy{
 
 
         openList.add(new PriorityPoint(dist(start,end), start));
+        distanceTraveled.put(start, 0);
 
         while (!openList.isEmpty()){
             PriorityPoint current = openList.poll();
+//            System.out.println("A*: check " + current.point);
             if(current.point.equals(end)){
-                //TODO: return the final path
                 break;
             }
             List<Point> neighbors =
                     CARDINAL_NEIGHBORS.apply(current.point)
                             .filter(p -> !closedList.contains(p))
-                            .filter(canPassThrough)
+                            .filter(canPassThrough.or(end::equals))
                             .collect(Collectors.toList());
             for (Point p : neighbors) {
-                distanceTraveled.put(p, distanceTraveled.get(current.point));
+                distanceTraveled.put(p, distanceTraveled.get(current.point)+1);
 
                 PriorityPoint pp = new PriorityPoint(dist(p, end)+distanceTraveled.get(p), p);
                 openList.add(pp);
@@ -65,13 +67,18 @@ public class AStarPathingStrategy implements PathingStrategy{
         if (closedList.contains(end)){
             Point current = end;
 
-
-            while (!current.equals(end)){
-                finalPathList.add(current);
+            while (true) {
                 current = previous.get(current);
+                if (!current.equals(start)) {
+                    finalPathList.add(current);
+                } else {
+                    break;
+                }
             }
 
             Collections.reverse(finalPathList);
+
+          //  System.out.println("Found Path: " + finalPathList);
         }
         else {
             finalPathList.add(start);

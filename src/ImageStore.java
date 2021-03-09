@@ -1,4 +1,3 @@
-import java.nio.file.Path;
 import java.util.*;
 
 import processing.core.PApplet;
@@ -75,7 +74,7 @@ final class ImageStore
                return parseOcto(properties, world);
             case Action.OBSTACLE_KEY:
                return parseObstacle(properties, world);
-            case Action.FISH_KEY:
+            case Action.BERRY_KEY:
                return parseFish(properties, world);
             case Action.ATLANTIS_KEY:
                return parseAtlantis(properties, world);
@@ -116,7 +115,7 @@ final class ImageStore
          Point pt = new Point(Integer.parseInt(properties[BGND_COL]),
                  Integer.parseInt(properties[BGND_ROW]));
          String id = properties[BGND_ID];
-         world.setBackground(pt,
+         world. setBackground(pt,
                  new Background(id, getImageList(id)));
       }
 
@@ -130,7 +129,7 @@ final class ImageStore
          PathingStrategy path = new SingleStepPathingStrategy();
          Point pt = new Point(Integer.parseInt(properties[Action.OCTO_COL]),
                  Integer.parseInt(properties[Action.OCTO_ROW]));
-         Entity entity = new OctoNotFull(properties[Action.OCTO_ID],
+         Entity entity = new SpinBirbNotFull(properties[Action.OCTO_ID],
                  Integer.parseInt(properties[Action.OCTO_LIMIT]),
                  pt,
                  Integer.parseInt(properties[Action.OCTO_ACTION_PERIOD]),
@@ -166,9 +165,9 @@ final class ImageStore
 
          Point pt = new Point(Integer.parseInt(properties[Action.FISH_COL]),
                  Integer.parseInt(properties[Action.FISH_ROW]));
-         Entity entity = new Fish(properties[Action.FISH_ID],
+         Entity entity = new Berry(properties[Action.FISH_ID],
                  pt, Integer.parseInt(properties[Action.FISH_ACTION_PERIOD]),
-                 getImageList(Action.FISH_KEY), path);
+                 getImageList(Action.BERRY_KEY), path);
          world.tryAddEntity( entity);
       }
 
@@ -198,7 +197,7 @@ final class ImageStore
          PathingStrategy path = new SingleStepPathingStrategy();
          Point pt = new Point(Integer.parseInt(properties[Action.SGRASS_COL]),
                  Integer.parseInt(properties[Action.SGRASS_ROW]));
-         Entity entity = new Sgrass(properties[Action.SGRASS_ID],
+         Entity entity = new Bush(properties[Action.SGRASS_ID],
                  pt,
                  Integer.parseInt(properties[Action.SGRASS_ACTION_PERIOD]),
                  getImageList(Action.SGRASS_KEY), path);

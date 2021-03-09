@@ -69,7 +69,7 @@ final class EventScheduler
    }
    public  void scheduleActions(Entity entity, WorldModel world, ImageStore imageStore) {
       switch (entity.getKind()) {
-         case OCTO_FULL:
+         case BIRB_FULL:
             scheduleEvent(entity,
                     Action.createActivityAction(entity, world, imageStore),
                     entity.getActionPeriod());
@@ -85,13 +85,13 @@ final class EventScheduler
                     Action.createAnimationAction(entity, 0), entity.getAnimationPeriod());
             break;
 
-         case FISH:
+         case BERRY:
             scheduleEvent(entity,
                     Action.createActivityAction(entity, world, imageStore),
                     entity.getActionPeriod());
             break;
 
-         case CRAB:
+         case WOLF:
             scheduleEvent(entity,
                     Action.createActivityAction(entity, world, imageStore),
                     entity.getActionPeriod());
@@ -99,7 +99,7 @@ final class EventScheduler
                     Action.createAnimationAction(entity, 0), entity.getAnimationPeriod());
             break;
 
-         case QUAKE:
+         case EXPLO:
             scheduleEvent(entity,
                     Action.createActivityAction(entity, world, imageStore),
                     entity.getActionPeriod());
@@ -108,7 +108,7 @@ final class EventScheduler
                     entity.getAnimationPeriod());
             break;
 
-         case SGRASS:
+         case BUSH:
             scheduleEvent(entity,
                     Action.createActivityAction(entity, world, imageStore),
                     entity.getActionPeriod());
@@ -116,6 +116,15 @@ final class EventScheduler
          case ATLANTIS:
             scheduleEvent(entity,
                     Action.createAnimationAction(entity, Action.ATLANTIS_ANIMATION_REPEAT_COUNT),
+                    entity.getAnimationPeriod());
+            break;
+
+         case CAT:
+            scheduleEvent(entity,
+                    Action.createActivityAction(entity, world, imageStore),
+                    entity.getActionPeriod());
+            scheduleEvent(entity,
+                    Action.createAnimationAction(entity, 0),
                     entity.getAnimationPeriod());
             break;
 

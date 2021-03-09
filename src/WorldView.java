@@ -25,6 +25,10 @@ final class WorldView
       this.viewport = new Viewport(numRows, numCols);
    }
 
+   public Point mouseToWorld(int mouseX, int mouseY){
+      return viewport.viewportToWorld(mouseX/32, mouseY/32);
+   }
+
    private void drawBackground()
    {
       for (int row = 0; row < this.viewport.getNumRows(); row++)

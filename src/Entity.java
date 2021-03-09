@@ -1,8 +1,6 @@
-import java.nio.file.Path;
 import java.util.List;
 import java.util.Optional;
 import java.util.Random;
-import java.util.function.BiPredicate;
 import java.util.function.Predicate;
 
 import processing.core.PImage;
@@ -62,11 +60,12 @@ Entity ideally would includes functions for how all the entities in our virtual 
    {
       switch (kind)
       {
-         case OCTO_FULL:
+         case BIRB_FULL:
          case OCTO_NOT_FULL:
-         case CRAB:
-         case QUAKE:
+         case WOLF:
+         case EXPLO:
          case ATLANTIS:
+         case CAT:
             return animationPeriod;
          default:
             throw new UnsupportedOperationException(

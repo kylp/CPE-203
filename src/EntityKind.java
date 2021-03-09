@@ -1,11 +1,12 @@
 enum EntityKind
 {
    ATLANTIS,
-   OCTO_FULL,
+   BIRB_FULL,
    OCTO_NOT_FULL,
    OBSTACLE,
-   FISH,
-   CRAB,
-   QUAKE,
-   SGRASS
+   BERRY,
+    WOLF,
+   EXPLO,
+   BUSH,
+   CAT
 }

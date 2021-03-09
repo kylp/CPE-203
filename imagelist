@@ -1,35 +1,31 @@
-atlantis images/atlantis0.bmp 255 255 255 0
-atlantis images/atlantis1.bmp 
-atlantis images/atlantis2.bmp 
-atlantis images/atlantis3.bmp 
-atlantis images/atlantis4.bmp 
-atlantis images/atlantis5.bmp
-atlantis images/atlantis6.bmp
-crab images/crabout01.bmp 255 255 255 128
-crab images/crabout02.bmp 255 255 255 128
-crab images/crabout03.bmp 255 255 255 128
-crab images/crabout04.bmp 255 255 255 128
-crab images/crabout05.bmp 255 255 255 128
-crab images/crabout06.bmp 255 255 255 128
-crab images/crabout07.bmp 255 255 255 128
-crab images/crabout08.bmp 255 255 255 128
-crab images/crabout09.bmp 255 255 255 128
-crab images/crabout10.bmp 255 255 255 128
-crab images/crabout11.bmp 255 255 255 128
-crab images/crabout11.bmp 255 255 255 128
+atlantis gamefiles/house1.png 255 255 255 0
+atlantis gamefiles/house2.png
+atlantis gamefiles/house3.png
+atlantis gamefiles/house3.png
+atlantis gamefiles/house3.png
+atlantis gamefiles/house2.png
+atlantis gamefiles/house1.png
+crab gamefiles/wolf1.png 255 255 255 128
+crab gamefiles/wolf2.png 255 255 255 128
+crab gamefiles/wolf3.png 255 255 255 128
+crab gamefiles/wolf4.png 255 255 255 128
+crab gamefiles/wolf5.png 255 255 255 128
 sea gamefiles/grass.png 255 255 255 0
 octo gamefiles/bluejay1.png 255 255 255 0
 octo gamefiles/bluejay2.png 255 255 255 0
 octo gamefiles/bluejay3.png 255 255 255 0
 octo gamefiles/bluejay4.png 255 255 255 0
-obstacle images/rock.bmp
-fish images/fish.bmp 255 255 255 0
-quake images/quake1.bmp 255 255 255 0
-quake images/quake2.bmp 255 255 255 0
-quake images/quake3.bmp 255 255 255 0
-quake images/quake4.bmp 255 255 255 0
-quake images/quake5.bmp 255 255 255 0
-quake images/quake6.bmp 255 255 255 0
-bubbles images/bubbles.bmp
-seaGrass images/Seaweed1.bmp 255 255 255 0
+obstacle gamefiles/stump.png
+fish gamefiles/berries1.png 255 255 255 0
+quake gamefiles/exp0.png 255 255 255 0
+quake gamefiles/exp1.png 255 255 255 0
+quake gamefiles/exp2.png 255 255 255 0
+quake gamefiles/exp3.png 255 255 255 0
+quake gamefiles/exp4.png 255 255 255 0
+quake gamefiles/exp3.png 255 255 255 0
+cat gamefiles/cat1.png 255 255 255 0
+cat gamefiles/cat2.png 255 255 255 0
+cat gamefiles/cat3.png 255 255 255 0
+cat gamefiles/cat4.png 255 255 255 0
+seaGrass gamefiles/bush.png 255 255 255 0
 background_default images/none.bmp
