@@ -160,9 +160,9 @@ final class WorldModel
    }
    public  Optional<Point> findOpenAround(Point pos)
    {
-      for (int dy = -Action.FISH_REACH; dy <= Action.FISH_REACH; dy++)
+      for (int dy = -Action.BERRY_REACH; dy <= Action.BERRY_REACH; dy++)
       {
-         for (int dx = -Action.FISH_REACH; dx <= Action.FISH_REACH; dx++)
+         for (int dx = -Action.BERRY_REACH; dx <= Action.BERRY_REACH; dx++)
          {
             Point newPt = new Point(pos.getX() + dx, pos.getY() + dy);
             if (this.withinBounds( newPt) &&

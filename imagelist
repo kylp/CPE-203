@@ -1,31 +1,36 @@
-atlantis gamefiles/house1.png 255 255 255 0
-atlantis gamefiles/house2.png
-atlantis gamefiles/house3.png
-atlantis gamefiles/house3.png
-atlantis gamefiles/house3.png
-atlantis gamefiles/house2.png
-atlantis gamefiles/house1.png
-crab gamefiles/wolf1.png 255 255 255 128
-crab gamefiles/wolf2.png 255 255 255 128
-crab gamefiles/wolf3.png 255 255 255 128
-crab gamefiles/wolf4.png 255 255 255 128
-crab gamefiles/wolf5.png 255 255 255 128
-sea gamefiles/grass.png 255 255 255 0
-octo gamefiles/bluejay1.png 255 255 255 0
-octo gamefiles/bluejay2.png 255 255 255 0
-octo gamefiles/bluejay3.png 255 255 255 0
-octo gamefiles/bluejay4.png 255 255 255 0
-obstacle gamefiles/stump.png
-fish gamefiles/berries1.png 255 255 255 0
-quake gamefiles/exp0.png 255 255 255 0
-quake gamefiles/exp1.png 255 255 255 0
-quake gamefiles/exp2.png 255 255 255 0
-quake gamefiles/exp3.png 255 255 255 0
-quake gamefiles/exp4.png 255 255 255 0
-quake gamefiles/exp3.png 255 255 255 0
+house gamefiles/house1.png 255 255 255 0
+house gamefiles/house2.png
+house gamefiles/house3.png
+house gamefiles/house3.png
+house gamefiles/house3.png
+house gamefiles/house2.png
+house gamefiles/house1.png
+wolf gamefiles/wolf1.png 255 255 255 128
+wolf gamefiles/wolf2.png 255 255 255 128
+wolf gamefiles/wolf3.png 255 255 255 128
+wolf gamefiles/wolf4.png 255 255 255 128
+wolf gamefiles/wolf5.png 255 255 255 128
+grass gamefiles/grass.png 255 255 255 0
+dirt gamefiles/dirt.png 255 255 255 0
+birb gamefiles/bluejay1.png 255 255 255 0
+birb gamefiles/bluejay2.png 255 255 255 0
+birb gamefiles/bluejay3.png 255 255 255 0
+birb gamefiles/bluejay4.png 255 255 255 0
+stump gamefiles/stump.png 255 255 255 0
+berry gamefiles/berries1.png 255 255 255 0
+explo gamefiles/exp0.png 255 255 255 0
+explo gamefiles/exp1.png 255 255 255 0
+explo gamefiles/exp2.png 255 255 255 0
+explo gamefiles/exp3.png 255 255 255 0
+explo gamefiles/exp4.png 255 255 255 0
+explo gamefiles/exp3.png 255 255 255 0
 cat gamefiles/cat1.png 255 255 255 0
 cat gamefiles/cat2.png 255 255 255 0
 cat gamefiles/cat3.png 255 255 255 0
 cat gamefiles/cat4.png 255 255 255 0
-seaGrass gamefiles/bush.png 255 255 255 0
+bush gamefiles/bush.png 255 255 255 0
+fox gamefiles/fox1.png 255 255 255 0
+fox gamefiles/fox2.png 255 255 255 0
+fox gamefiles/fox3.png 255 255 255 0
+fox gamefiles/fox4.png 255 255 255 0
 background_default images/none.bmp

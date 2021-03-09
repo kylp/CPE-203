@@ -15,7 +15,7 @@ public class SpinBirbFull extends SpinBirb {
     public void executeActivityAction(WorldModel world,
                                         ImageStore imageStore, EventScheduler scheduler) {
         Optional<Entity> fullTarget = world.findNearest(getPosition(),
-                EntityKind.ATLANTIS);
+                EntityKind.HOUSE);
 
         if (fullTarget.isPresent() &&
                 moveToFull( world, fullTarget.get(), scheduler)) {

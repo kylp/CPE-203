@@ -21,7 +21,7 @@ Entity ideally would includes functions for how all the entities in our virtual 
    private int resourceCount;
    private final int actionPeriod;
    private final int animationPeriod;
-   private PathingStrategy pathingStrategy;
+   protected final PathingStrategy pathingStrategy;
 
 
    public static Predicate<Point> canPassThrough(WorldModel world){
@@ -64,7 +64,8 @@ Entity ideally would includes functions for how all the entities in our virtual 
          case OCTO_NOT_FULL:
          case WOLF:
          case EXPLO:
-         case ATLANTIS:
+         case HOUSE:
+         case FOX:
          case CAT:
             return animationPeriod;
          default:

@@ -70,15 +70,15 @@ final class ImageStore
          {
             case BGND_KEY:
                return parseBackground(properties, world);
-            case Action.OCTO_KEY:
+            case Action.BIRB_KEY:
                return parseOcto(properties, world);
-            case Action.OBSTACLE_KEY:
+            case Action.STUMP_KEY:
                return parseObstacle(properties, world);
             case Action.BERRY_KEY:
                return parseFish(properties, world);
-            case Action.ATLANTIS_KEY:
+            case Action.HOUSE_KEY:
                return parseAtlantis(properties, world);
-            case Action.SGRASS_KEY:
+            case Action.BUSH_KEY:
                return parseSgrass(properties, world);
          }
       }
@@ -124,87 +124,87 @@ final class ImageStore
 
    private  boolean parseOcto(String [] properties, WorldModel world)
    {
-      if (properties.length == Action.OCTO_NUM_PROPERTIES)
+      if (properties.length == Action.BIRB_NUM_PROPERTIES)
       {
          PathingStrategy path = new SingleStepPathingStrategy();
-         Point pt = new Point(Integer.parseInt(properties[Action.OCTO_COL]),
-                 Integer.parseInt(properties[Action.OCTO_ROW]));
-         Entity entity = new SpinBirbNotFull(properties[Action.OCTO_ID],
-                 Integer.parseInt(properties[Action.OCTO_LIMIT]),
+         Point pt = new Point(Integer.parseInt(properties[Action.BIRB_COL]),
+                 Integer.parseInt(properties[Action.BIRB_ROW]));
+         Entity entity = new SpinBirbNotFull(properties[Action.BIRB_ID],
+                 Integer.parseInt(properties[Action.BIRB_LIMIT]),
                  pt,
-                 Integer.parseInt(properties[Action.OCTO_ACTION_PERIOD]),
-                 Integer.parseInt(properties[Action.OCTO_ANIMATION_PERIOD]),
-                 getImageList( Action.OCTO_KEY), path);
+                 Integer.parseInt(properties[Action.BIRB_ACTION_PERIOD]),
+                 Integer.parseInt(properties[Action.BIRB_ANIMATION_PERIOD]),
+                 getImageList( Action.BIRB_KEY), path);
          world.tryAddEntity( entity);
       }
 
-      return properties.length == Action.OCTO_NUM_PROPERTIES;
+      return properties.length == Action.BIRB_NUM_PROPERTIES;
    }
 
    private  boolean parseObstacle(String [] properties, WorldModel world)
    {
       PathingStrategy path = new SingleStepPathingStrategy();
-      if (properties.length == Action.OBSTACLE_NUM_PROPERTIES)
+      if (properties.length == Action.STUMP_NUM_PROPERTIES)
       {
          Point pt = new Point(
-                 Integer.parseInt(properties[Action.OBSTACLE_COL]),
-                 Integer.parseInt(properties[Action.OBSTACLE_ROW]));
-         Entity entity = new Obstacle(properties[Action.OBSTACLE_ID],
-                 pt, getImageList(Action.OBSTACLE_KEY), path);
+                 Integer.parseInt(properties[Action.STUMP_COL]),
+                 Integer.parseInt(properties[Action.STUMP_ROW]));
+         Entity entity = new Stump(properties[Action.STUMP_ID],
+                 pt, getImageList(Action.STUMP_KEY), path);
          world.tryAddEntity( entity);
       }
 
-      return properties.length == Action.OBSTACLE_NUM_PROPERTIES;
+      return properties.length == Action.STUMP_NUM_PROPERTIES;
    }
 
    private  boolean parseFish(String [] properties, WorldModel world)
    {
-      if (properties.length == Action.FISH_NUM_PROPERTIES)
+      if (properties.length == Action.BERRY_NUM_PROPERTIES)
       {
          PathingStrategy path = new SingleStepPathingStrategy();
 
-         Point pt = new Point(Integer.parseInt(properties[Action.FISH_COL]),
-                 Integer.parseInt(properties[Action.FISH_ROW]));
-         Entity entity = new Berry(properties[Action.FISH_ID],
-                 pt, Integer.parseInt(properties[Action.FISH_ACTION_PERIOD]),
+         Point pt = new Point(Integer.parseInt(properties[Action.BERRY_COL]),
+                 Integer.parseInt(properties[Action.BERRY_ROW]));
+         Entity entity = new Berry(properties[Action.BERRY_ID],
+                 pt, Integer.parseInt(properties[Action.BERRY_ACTION_PERIOD]),
                  getImageList(Action.BERRY_KEY), path);
          world.tryAddEntity( entity);
       }
 
-      return properties.length == Action.FISH_NUM_PROPERTIES;
+      return properties.length == Action.BERRY_NUM_PROPERTIES;
    }
 
    private  boolean parseAtlantis(String [] properties, WorldModel world)
    {
-      if (properties.length == Action.ATLANTIS_NUM_PROPERTIES)
+      if (properties.length == Action.HOUSE_NUM_PROPERTIES)
       {
          PathingStrategy path = new SingleStepPathingStrategy();
-         Point pt = new Point(Integer.parseInt(properties[Action.ATLANTIS_COL]),
-                 Integer.parseInt(properties[Action.ATLANTIS_ROW]));
-         Entity entity = new Atlantis(properties[Action.ATLANTIS_ID],
-                 pt, getImageList(Action.ATLANTIS_KEY), path);
+         Point pt = new Point(Integer.parseInt(properties[Action.HOUSE_COL]),
+                 Integer.parseInt(properties[Action.HOUSE_ROW]));
+         Entity entity = new House(properties[Action.HOUSE_ID],
+                 pt, getImageList(Action.HOUSE_KEY), path);
          world.tryAddEntity(entity);
       }
 
-      return properties.length == Action.ATLANTIS_NUM_PROPERTIES;
+      return properties.length == Action.HOUSE_NUM_PROPERTIES;
    }
 
    private  boolean parseSgrass(String [] properties, WorldModel world
                                      )
    {
-      if (properties.length == Action.SGRASS_NUM_PROPERTIES)
+      if (properties.length == Action.BUSH_NUM_PROPERTIES)
       {
          PathingStrategy path = new SingleStepPathingStrategy();
-         Point pt = new Point(Integer.parseInt(properties[Action.SGRASS_COL]),
-                 Integer.parseInt(properties[Action.SGRASS_ROW]));
-         Entity entity = new Bush(properties[Action.SGRASS_ID],
+         Point pt = new Point(Integer.parseInt(properties[Action.BUSH_COL]),
+                 Integer.parseInt(properties[Action.BUSH_ROW]));
+         Entity entity = new Bush(properties[Action.BUSH_ID],
                  pt,
-                 Integer.parseInt(properties[Action.SGRASS_ACTION_PERIOD]),
-                 getImageList(Action.SGRASS_KEY), path);
+                 Integer.parseInt(properties[Action.BUSH_ACTION_PERIOD]),
+                 getImageList(Action.BUSH_KEY), path);
          world.tryAddEntity(entity);
       }
 
-      return properties.length == Action.SGRASS_NUM_PROPERTIES;
+      return properties.length == Action.BUSH_NUM_PROPERTIES;
    }
    private  void processImageLine(Map<String, List<PImage>> images,
                                        String line, PApplet screen)

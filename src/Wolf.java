@@ -21,12 +21,12 @@ public class Wolf extends Entity {
             Point tgtPos = wolfTarget.get().getPosition();
 
             if (moveToWolf(world, wolfTarget.get(), scheduler)) {
-                Entity quake = new Explo(tgtPos,
-                        imageStore.getImageList( Action.QUAKE_KEY), path);
+                Entity explo = new Explo(tgtPos,
+                        imageStore.getImageList( Action.EXPLO), path);
 
-                world.addEntity(quake);
+                world.addEntity(explo);
                 nextPeriod += getActionPeriod();
-                scheduler.scheduleActions(quake, world, imageStore);
+                scheduler.scheduleActions(explo, world, imageStore);
             }
         }
 
@@ -85,7 +85,6 @@ public class Wolf extends Entity {
 //                newPos = getPosition();
 //            }
 //        }
-        PathingStrategy pathingStrategy = new AStarPathingStrategy();
 
         List<Point> nextPoints = pathingStrategy.computePath(getPosition(), destPos, canPassThrough(world),
                 Entity::withinReach, PathingStrategy.CARDINAL_NEIGHBORS);

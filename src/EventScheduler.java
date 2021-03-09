@@ -113,13 +113,14 @@ final class EventScheduler
                     Action.createActivityAction(entity, world, imageStore),
                     entity.getActionPeriod());
             break;
-         case ATLANTIS:
+         case HOUSE:
             scheduleEvent(entity,
-                    Action.createAnimationAction(entity, Action.ATLANTIS_ANIMATION_REPEAT_COUNT),
+                    Action.createAnimationAction(entity, Action.HOUSE_ANIMATION_REPEAT_COUNT),
                     entity.getAnimationPeriod());
             break;
 
          case CAT:
+         case FOX:
             scheduleEvent(entity,
                     Action.createActivityAction(entity, world, imageStore),
                     entity.getActionPeriod());

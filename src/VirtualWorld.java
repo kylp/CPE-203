@@ -104,6 +104,31 @@ public final class VirtualWorld
          world.addEntity(berry);
          scheduler.scheduleActions(berry, world, imageStore);
       }
+      world.setBackground(spawnPoint, new Background(Action.DIRT_ID, imageStore.getImageList(Action.DIRT_ID)));
+      world.setBackground(new Point(spawnPoint.x+1, spawnPoint.y), new Background(Action.DIRT_ID, imageStore.getImageList(Action.DIRT_ID)));
+      world.setBackground(new Point(spawnPoint.x-1, spawnPoint.y), new Background(Action.DIRT_ID, imageStore.getImageList(Action.DIRT_ID)));
+      world.setBackground(new Point(spawnPoint.x, spawnPoint.y-1), new Background(Action.DIRT_ID, imageStore.getImageList(Action.DIRT_ID)));
+      world.setBackground(new Point(spawnPoint.x, spawnPoint.y+1), new Background(Action.DIRT_ID, imageStore.getImageList(Action.DIRT_ID)));
+
+      Entity wolfToChange = null;
+      for (Entity entity : world.getEntities())
+      {
+         if (entity.getKind() == EntityKind.WOLF) {
+            if (Math.abs(spawnPoint.x - entity.getPosition().x) +
+                    Math.abs(spawnPoint.y - entity.getPosition().y) <= 3) {
+               wolfToChange = entity;
+               break;
+            }
+         }
+      }
+      if (wolfToChange != null) {
+         Point pos = wolfToChange.getPosition();
+         world.removeEntity(wolfToChange);
+         scheduler.unscheduleAllEvents(wolfToChange);
+         Entity fox = new Fox(Action.FOX_ID, pos, Action.FOX_ACTION_PERIOD,Action.FOX_ANIMATION_PERIOD, imageStore.getImageList(Action.FOX_ID), path);
+         world.addEntity(fox);
+         scheduler.scheduleActions(fox, world, imageStore);
+      }
    }
 
    public void keyPressed() {
@@ -133,6 +158,7 @@ public final class VirtualWorld
                Entity blocker = world.getOccupant(newPos).get();
                if (blocker instanceof SpinBirb) {
                   world.removeEntity(blocker);
+                  scheduler.unscheduleAllEvents(blocker);
                   world.moveEntity(theCat, newPos);
                }
             } else {

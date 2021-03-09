@@ -1,6 +1,6 @@
 enum EntityKind
 {
-   ATLANTIS,
+    HOUSE,
    BIRB_FULL,
    OCTO_NOT_FULL,
    OBSTACLE,
@@ -8,5 +8,6 @@ enum EntityKind
     WOLF,
    EXPLO,
    BUSH,
-   CAT
+   CAT,
+    FOX
 }
