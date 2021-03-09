@@ -17,5 +17,6 @@
       </library>
     </orderEntry>
     <orderEntry type="library" name="processing-core" level="project" />
+    <orderEntry type="library" name="processing-experimental" level="project" />
   </component>
 </module>

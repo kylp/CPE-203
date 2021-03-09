@@ -3,7 +3,7 @@ import processing.core.PImage;
 import java.util.List;
 import java.util.Optional;
 
-public class Crab extends Entity {
+public class  Crab extends Entity {
     public Crab(String id, Point position,
                 int actionPeriod, int animationPeriod, List<PImage> images, PathingStrategy pathingStrategy) {
         super(EntityKind.CRAB, id, position, images,
