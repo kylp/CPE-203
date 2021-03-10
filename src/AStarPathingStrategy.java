@@ -44,14 +44,17 @@ public class AStarPathingStrategy implements PathingStrategy{
         openList.add(new PriorityPoint(dist(start,end), start));
         distanceTraveled.put(start, 0);
 
+        Point realEnd = null;
+
         while (!openList.isEmpty()){
             PriorityPoint current = openList.poll();
 //            System.out.println("A*: check " + current.point);
-            if(current.point.equals(end)){
+            if(withinReach.test(current.point, end)){
+                realEnd = current.point;
                 break;
             }
             List<Point> neighbors =
-                    CARDINAL_NEIGHBORS.apply(current.point)
+                    potentialNeighbors.apply(current.point)
                             .filter(p -> !closedList.contains(p))
                             .filter(canPassThrough.or(end::equals))
                             .collect(Collectors.toList());
@@ -64,8 +67,9 @@ public class AStarPathingStrategy implements PathingStrategy{
                 previous.put(p, current.point);
             }
         }
-        if (closedList.contains(end)){
-            Point current = end;
+        if (realEnd != null){
+            Point current = realEnd;
+            finalPathList.add(current);
 
             while (true) {
                 current = previous.get(current);
@@ -80,9 +84,9 @@ public class AStarPathingStrategy implements PathingStrategy{
 
           //  System.out.println("Found Path: " + finalPathList);
         }
-        else {
-            finalPathList.add(start);
-        }
+//        else {
+//            finalPathList.add(start);
+//        }
         return finalPathList;
 
 
